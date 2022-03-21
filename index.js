@@ -1,7 +1,14 @@
 const express = require('express')
+const path = require("path");
 const app = express();
-// lisab public directory
+
+// adds public directory
 app.use(express.static('public'));
+// adds views directory path
+app.set('views', path.join(__dirname, 'views'));
+// adds views template engine
+app.set('view engine', 'ejs');
+
 
 app.get('/user/:username', (req, res) => {
     let user = req.params.username;
